@@ -1,0 +1,189 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/Spatial.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/new_styleboxflat.tres" type="StyleBox" id=2]
+[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/PlatformKiller.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Killbox.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 1, 1, 1 )
+
+[sub_resource type="BoxShape" id=2]
+
+extents = Vector3( 1, 1, 1 )
+
+[node name="Main" type="Spatial"]
+
+[node name="Game Manager" type="Spatial" parent="." index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 6 )
+script = ExtResource( 1 )
+
+[node name="GameOver" type="Panel" parent="Game Manager" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 242.0
+margin_top = 166.0
+margin_right = 821.0
+margin_bottom = 390.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/panel = ExtResource( 2 )
+_sections_unfolded = [ "custom_styles" ]
+
+[node name="Label" type="Label" parent="Game Manager/GameOver" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 187.0
+margin_top = 72.0
+margin_right = 374.0
+margin_bottom = 153.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "GAME OVER"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Platform" parent="Game Manager" index="1" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, -5 )
+
+[node name="Platform2" parent="Game Manager" index="2" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 3 )
+
+[node name="PlatformKiller" type="Area" parent="Game Manager" index="3"]
+
+editor/display_folded = true
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, -17 )
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 1
+collision_mask = 1
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="Game Manager/PlatformKiller" index="0"]
+
+shape = SubResource( 1 )
+disabled = false
+
+[node name="Killbox" type="Area" parent="Game Manager" index="4"]
+
+editor/display_folded = true
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 15, 0, -4.34142, -6 )
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 1
+collision_mask = 1
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="Game Manager/Killbox" index="0"]
+
+shape = SubResource( 2 )
+disabled = false
+
+[node name="Camera" type="Camera" parent="." index="1"]
+
+transform = Transform( -4.37114e-08, 0.207912, -0.978148, 0, 0.978148, 0.207912, 1, 9.08811e-09, -4.27562e-08, -5.94248, 2, 0 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Player" parent="." index="2" instance=ExtResource( 6 )]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="3"]
+
+transform = Transform( 0.830234, 0.11187, -0.546074, 0.169778, 0.882357, 0.438887, 0.530931, -0.457091, 0.713569, -5.25935, 3.29915, 6.97017 )
+layers = 1
+light_color = Color( 0.730427, 0.913573, 0.917969, 1 )
+light_energy = 0.9
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.1
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.1
+directional_shadow_split_2 = 0.2
+directional_shadow_split_3 = 0.5
+directional_shadow_blend_splits = false
+directional_shadow_normal_bias = 0.8
+directional_shadow_bias_split_scale = 0.25
+directional_shadow_depth_range = 0
+directional_shadow_max_distance = 200.0
+_sections_unfolded = [ "Light", "Transform" ]
+
+[connection signal="body_entered" from="Game Manager/PlatformKiller" to="Game Manager/PlatformKiller" method="_on_Platform_Killer_body_entered"]
+
+[connection signal="body_entered" from="Game Manager/Killbox" to="Game Manager/Killbox" method="_on_Killbox_body_entered"]
+
+
