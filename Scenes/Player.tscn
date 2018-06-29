@@ -1,20 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Models/TempCharacter01.OBJ" type="ArrayMesh" id=2]
 
-[sub_resource type="CapsuleShape" id=1]
-
-radius = 1.0
-height = 1.0
-
-[sub_resource type="CapsuleMesh" id=2]
-
-radius = 1.0
-mid_height = 1.0
-radial_segments = 64
-rings = 8
-
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=1]
 
 render_priority = 0
 flags_transparent = false
@@ -37,7 +26,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 0.773451, 0.172568, 0.637303, 1 )
+albedo_color = Color( 0.0420447, 0.601562, 0.52288, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -64,7 +53,12 @@ uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
-_sections_unfolded = [ "Metallic" ]
+_sections_unfolded = [ "Albedo" ]
+
+[sub_resource type="CapsuleShape" id=2]
+
+radius = 1.0
+height = 1.0
 
 [node name="Player" type="KinematicBody"]
 
@@ -83,13 +77,9 @@ collision/safe_margin = 0.001
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape" type="CollisionShape" parent="." index="0"]
+[node name="MeshInstance" type="MeshInstance" parent="." index="0"]
 
-shape = SubResource( 1 )
-disabled = false
-
-[node name="MeshInstance" type="MeshInstance" parent="." index="1"]
-
+transform = Transform( 0.008, 0, 0, 0, -3.49691e-10, 0.008, 0, -0.008, -3.49691e-10, 0, -0.5245, 0.100658 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -99,9 +89,16 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 2 )
+mesh = ExtResource( 2 )
 skeleton = NodePath("..")
-material/0 = SubResource( 3 )
-_sections_unfolded = [ "material" ]
+material/0 = SubResource( 1 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, -0.02404, 0.28214 )
+shape = SubResource( 2 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
 
 

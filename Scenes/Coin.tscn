@@ -68,7 +68,7 @@ _sections_unfolded = [ "Albedo", "Parameters", "Roughness" ]
 
 radius = 1.0
 
-[node name="Coin" type="Spatial" index="0"]
+[node name="Coin" type="Spatial"]
 
 [node name="Coin" type="Area" parent="." index="0"]
 
