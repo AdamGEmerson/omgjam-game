@@ -6,17 +6,16 @@ var gravity = -9.8
 var velocity = Vector3()
 var in_air
 var double_timer = 0
+var manager
 var double_cd = 200
+var scorable = false
+
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
+	manager = get_node("../Game Manager/")
 	pass
 
 func _physics_process(delta):
-	direction = Vector3(0, 0, 0)
-	direction = direction.normalized()
-	direction = direction * speed * delta
 	
 	velocity.y += gravity * delta
 	
@@ -29,6 +28,9 @@ func _physics_process(delta):
 	
 	# Detects floor for jumps. Controls state for double jump.
 	if collision:
+		var collider = collision.get_collider()
+		if collider.point_givable:
+			collider.give_point()
 		in_air = false
 		
 		if Input.is_action_just_pressed('ui_up'):
@@ -38,9 +40,9 @@ func _physics_process(delta):
 	elif Input.is_action_just_pressed('ui_up') and in_air:
 		if double_timer <= 0:
 			if velocity.y < 3:
-				velocity.y = 5
+				velocity.y = 8
 			else:
-				velocity.y  += 5
+				velocity.y  += 8
 			double_timer = double_cd
 			get_node("../Game Manager/Double").hide()
 

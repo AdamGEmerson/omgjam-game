@@ -3,6 +3,7 @@ extends VisibilityNotifier
 var parent
 var killable
 var children
+var killtimer = 50
 
 func _ready():
 	parent = get_parent()
@@ -14,8 +15,10 @@ func _process(delta):
 		if children >= 5:
 			pass
 		else:
-			parent.queue_free()
-			print("master killed")
+			killtimer -= 1
+			if killtimer == 0:
+				parent.queue_free()
+				print("master killed")
 
 
 func _on_VisibilityNotifier_screen_exited():

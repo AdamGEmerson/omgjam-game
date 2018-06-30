@@ -1,14 +1,31 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Assets/temp_bg.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Spatial.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/new_styleboxflat.tres" type="StyleBox" id=4]
-[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scripts/Killbox.gd" type="Script" id=6]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/DINMittelschrift-Alternate.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/Killbox.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=8]
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="DynamicFont" id=2]
+
+size = 24
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 50
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="BoxShape" id=1]
 
 extents = Vector3( 1, 1, 1 )
 
@@ -58,7 +75,6 @@ script = ExtResource( 3 )
 
 [node name="GameOver" type="Panel" parent="Game Manager" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -90,7 +106,8 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "GAME OVER"
+custom_fonts/font = SubResource( 2 )
+text = "Game Over"
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -135,45 +152,36 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Score" type="Panel" parent="Game Manager" index="2"]
+[node name="Score" type="Label" parent="Game Manager" index="2"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 1850.0
 margin_top = 17.0
-margin_right = 1890.0
-margin_bottom = 57.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-
-[node name="Label" type="Label" parent="Game Manager/Score" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 40.0
-margin_bottom = 14.0
+margin_right = 1966.0
+margin_bottom = 109.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
 text = "0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
 
-[node name="Platform" parent="Game Manager" index="3" instance=ExtResource( 5 )]
+[node name="Platform" parent="Game Manager" index="3" instance=ExtResource( 6 )]
 
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12 )
+
+[node name="CollisionShape" parent="Game Manager/Platform" index="1"]
+
+_sections_unfolded = [ "Transform" ]
 
 [node name="Killbox" type="Area" parent="Game Manager" index="4"]
 
@@ -199,17 +207,17 @@ reverb_bus_enable = false
 reverb_bus_name = "Master"
 reverb_bus_amount = 0.0
 reverb_bus_uniformity = 0.0
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="Game Manager/Killbox" index="0"]
 
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 disabled = false
 
 [node name="Camera" type="Camera" parent="." index="3"]
 
-transform = Transform( -4.37114e-08, 0.207912, -0.978148, 0, 0.978148, 0.207912, 1, 9.08811e-09, -4.27562e-08, -5, 2, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12, 1, -3 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -218,15 +226,15 @@ v_offset = 0.0
 doppler_tracking = 0
 projection = 0
 current = false
-fov = 70.0
+fov = 25.0
 size = 1.0
 near = 0.05
 far = 100.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="Player" parent="." index="4" instance=ExtResource( 7 )]
+[node name="Player" parent="." index="4" instance=ExtResource( 8 )]
 
-transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, -4 )
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, -6 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="5"]
 
