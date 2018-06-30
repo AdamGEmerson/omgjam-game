@@ -1,6 +1,5 @@
 extends Spatial
 
-# class member variables go here, for example:
 var game_active
 var score = 0
 var scoreboard
@@ -8,13 +7,12 @@ var platform_queue = []
 
 func add_to_platform_queue():
 	var next_plat = preload("res://Scenes/Platform.tscn").instance()
-	
+	platform_queue.append(next_plat)
 
 func spawn_platform(Vector):
-	var next_plat = preload("res://Scenes/Platform.tscn").instance()
-	print("Platform Spawned")
-	next_plat.translate(Vector)
-	add_child(next_plat)
+	var platform = platform_queue.pop_front()
+	platform.translate(Vector)
+	add_child(platform)
 
 
 func _ready():
@@ -24,7 +22,8 @@ func _ready():
 
 func _process(delta):
 	if game_active:
-		pass
+		if platform_queue.size() < 5:
+			add_to_platform_queue()
 	else:
 		$GameOver.show()
 		if Input.is_action_just_pressed("ui_accept"):

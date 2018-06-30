@@ -2,19 +2,20 @@
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Assets/temp_bg.png" type="Texture" id=2]
-[ext_resource path="res://Scripts/Spatial.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/new_styleboxflat.tres" type="StyleBox" id=4]
-[ext_resource path="res://Assets/DINMittelschrift-Alternate.otf" type="DynamicFontData" id=5]
-[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scripts/Killbox.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/Animated_Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/HudCanvas.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/coin-icon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Spatial.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/new_styleboxflat.tres" type="StyleBox" id=6]
+[ext_resource path="res://Assets/DINMittelschrift-Alternate.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/animated-player-v2.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 24
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 5 )
+font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font" ]
 
 [sub_resource type="DynamicFont" id=2]
@@ -22,14 +23,10 @@ _sections_unfolded = [ "Font" ]
 size = 50
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 5 )
+font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="BoxShape" id=3]
-
-extents = Vector3( 1, 1, 1 )
-
-[node name="Main" type="Spatial"]
+[node name="Main" type="Spatial" index="0"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
 
@@ -68,14 +65,40 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 0
 
-[node name="Game Manager" type="Spatial" parent="." index="2"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="2"]
 
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 6 )
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 3 )
+
+[node name="coinicon" parent="CanvasLayer" index="0" instance=ExtResource( 4 )]
+
+_sections_unfolded = [ "Rect", "Visibility" ]
+
+[node name="coinicon2" parent="CanvasLayer" index="1" instance=ExtResource( 4 )]
+
+margin_left = 150.0
+margin_right = 238.0
+margin_bottom = 86.0
+
+[node name="coinicon3" parent="CanvasLayer" index="2" instance=ExtResource( 4 )]
+
+margin_left = 289.0
+margin_top = -3.0
+margin_right = 377.0
+margin_bottom = 83.0
+
+[node name="Game Manager" type="Spatial" parent="." index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 6 )
+script = ExtResource( 5 )
 
 [node name="GameOver" type="Panel" parent="Game Manager" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -89,7 +112,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_styles/panel = ExtResource( 4 )
+custom_styles/panel = ExtResource( 6 )
 _sections_unfolded = [ "custom_styles" ]
 
 [node name="Label" type="Label" parent="Game Manager/GameOver" index="0"]
@@ -116,44 +139,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Double" type="Panel" parent="Game Manager" index="1"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 31.0
-margin_top = 22.0
-margin_right = 134.0
-margin_bottom = 55.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-
-[node name="Label" type="Label" parent="Game Manager/Double" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 6.0
-margin_top = 7.0
-margin_right = 94.0
-margin_bottom = 21.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "Double Ready"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Score" type="Label" parent="Game Manager" index="2"]
+[node name="Score" type="Label" parent="Game Manager" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -175,48 +161,16 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Platform" parent="Game Manager" index="3" instance=ExtResource( 6 )]
+[node name="Platform" parent="Game Manager" index="2" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12 )
 
-[node name="CollisionShape" parent="Game Manager/Platform" index="1"]
+[node name="CollisionShape" parent="Game Manager/Platform" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 
-[node name="Killbox" type="Area" parent="Game Manager" index="4"]
-
-editor/display_folded = true
-transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 15, 0, -4.34142, -6 )
-input_ray_pickable = false
-input_capture_on_drag = false
-space_override = 0
-gravity_point = false
-gravity_distance_scale = 0.0
-gravity_vec = Vector3( 0, -1, 0 )
-gravity = 9.8
-linear_damp = 0.1
-angular_damp = 1.0
-priority = 0.0
-monitoring = true
-monitorable = true
-collision_layer = 1
-collision_mask = 1
-audio_bus_override = false
-audio_bus_name = "Master"
-reverb_bus_enable = false
-reverb_bus_name = "Master"
-reverb_bus_amount = 0.0
-reverb_bus_uniformity = 0.0
-script = ExtResource( 7 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape" type="CollisionShape" parent="Game Manager/Killbox" index="0"]
-
-shape = SubResource( 3 )
-disabled = false
-
-[node name="Camera" type="Camera" parent="." index="3"]
+[node name="Camera" type="Camera" parent="." index="4"]
 
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12, 1, -3 )
 keep_aspect = 1
@@ -233,7 +187,7 @@ near = 0.05
 far = 100.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="DirectionalLight" type="DirectionalLight" parent="." index="4"]
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="5"]
 
 transform = Transform( -0.984469, 0.131663, 0.116129, 0.169778, 0.882357, 0.438887, -0.0446827, 0.451787, -0.891006, 2.74065, 3.29915, -6.02983 )
 layers = 1
@@ -261,7 +215,7 @@ directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Light", "Transform" ]
 
-[node name="OmniLight" type="OmniLight" parent="." index="5"]
+[node name="OmniLight" type="OmniLight" parent="." index="6"]
 
 transform = Transform( -0.984469, 0.131663, 0.116129, 0.169778, 0.882357, 0.438887, -0.0446827, 0.451787, -0.891006, -2.25935, 3.29915, 3.97017 )
 layers = 1
@@ -284,24 +238,10 @@ omni_shadow_mode = 1
 omni_shadow_detail = 1
 _sections_unfolded = [ "Light", "Omni" ]
 
-[node name="Player" type="KinematicBody" parent="." index="6" instance=ExtResource( 8 )]
+[node name="Player" parent="." index="7" instance=ExtResource( 9 )]
 
-editor/display_folded = true
-transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, -6 )
-input_ray_pickable = true
-input_capture_on_drag = false
-collision_layer = 1
-collision_mask = 1
-axis_lock_linear_x = false
-axis_lock_linear_y = false
-axis_lock_linear_z = false
-axis_lock_angular_x = false
-axis_lock_angular_y = false
-axis_lock_angular_z = false
-collision/safe_margin = 0.001
-_sections_unfolded = [ "Transform" ]
-
-[connection signal="body_entered" from="Game Manager/Killbox" to="Game Manager/Killbox" method="_on_Killbox_body_entered"]
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, -0.145377, -6.5 )
+axis_lock_linear_y = true
 
 
 [editable path="Game Manager/Platform"]

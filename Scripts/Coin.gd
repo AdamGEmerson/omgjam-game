@@ -18,8 +18,6 @@ func _ready():
 func _on_Coin_body_entered( body ):
 	if body is KinematicBody:
 		
-		if body.velocity.y < 0:
-			body.velocity.y = 6
-		else: 
-			body.velocity.y += 6
+		if body.inventory.size() < 3:
+			body.inventory.append("Power-Up")
 		queue_free()

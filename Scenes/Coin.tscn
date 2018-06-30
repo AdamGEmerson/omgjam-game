@@ -33,7 +33,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 0.957031, 0.876555, 0.0205813, 1 )
+albedo_color = Color( 1, 0.666667, 0.955729, 1 )
 metallic = 1.0
 metallic_specular = 1.0
 metallic_texture_channel = 0
@@ -69,6 +69,9 @@ _sections_unfolded = [ "Albedo", "Parameters", "Roughness" ]
 radius = 1.0
 
 [node name="Coin" type="Spatial"]
+
+transform = Transform( 0.1, 0, 0, 0, 0.3, 0, 0, 0, 0.2, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Coin" type="Area" parent="." index="0"]
 
