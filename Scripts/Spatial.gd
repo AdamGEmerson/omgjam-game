@@ -4,6 +4,11 @@ extends Spatial
 var game_active
 var score = 0
 var scoreboard
+var platform_queue = []
+
+func add_to_platform_queue():
+	var next_plat = preload("res://Scenes/Platform.tscn").instance()
+	
 
 func spawn_platform(Vector):
 	var next_plat = preload("res://Scenes/Platform.tscn").instance()

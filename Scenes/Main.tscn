@@ -7,9 +7,9 @@
 [ext_resource path="res://Assets/DINMittelschrift-Alternate.otf" type="DynamicFontData" id=5]
 [ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/Killbox.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Animated_Player.tscn" type="PackedScene" id=8]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 
 size = 24
 use_mipmaps = false
@@ -17,7 +17,7 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font" ]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 
 size = 50
 use_mipmaps = false
@@ -25,11 +25,11 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape" id=3]
 
 extents = Vector3( 1, 1, 1 )
 
-[node name="Main" type="Spatial" index="0"]
+[node name="Main" type="Spatial"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
 
@@ -70,6 +70,7 @@ stretch_mode = 0
 
 [node name="Game Manager" type="Spatial" parent="." index="2"]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 6 )
 script = ExtResource( 3 )
 
@@ -106,7 +107,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Game Over"
 align = 1
 valign = 1
@@ -167,7 +168,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "0"
 percent_visible = 1.0
 lines_skipped = 0
@@ -212,7 +213,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="Game Manager/Killbox" index="0"]
 
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 disabled = false
 
 [node name="Camera" type="Camera" parent="." index="3"]
@@ -232,11 +233,7 @@ near = 0.05
 far = 100.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="Player" parent="." index="4" instance=ExtResource( 8 )]
-
-transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, -6 )
-
-[node name="DirectionalLight" type="DirectionalLight" parent="." index="5"]
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="4"]
 
 transform = Transform( -0.984469, 0.131663, 0.116129, 0.169778, 0.882357, 0.438887, -0.0446827, 0.451787, -0.891006, 2.74065, 3.29915, -6.02983 )
 layers = 1
@@ -264,7 +261,7 @@ directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Light", "Transform" ]
 
-[node name="OmniLight" type="OmniLight" parent="." index="6"]
+[node name="OmniLight" type="OmniLight" parent="." index="5"]
 
 transform = Transform( -0.984469, 0.131663, 0.116129, 0.169778, 0.882357, 0.438887, -0.0446827, 0.451787, -0.891006, -2.25935, 3.29915, 3.97017 )
 layers = 1
@@ -286,6 +283,23 @@ omni_attenuation = 1.0
 omni_shadow_mode = 1
 omni_shadow_detail = 1
 _sections_unfolded = [ "Light", "Omni" ]
+
+[node name="Player" type="KinematicBody" parent="." index="6" instance=ExtResource( 8 )]
+
+editor/display_folded = true
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, -6 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+axis_lock_linear_x = false
+axis_lock_linear_y = false
+axis_lock_linear_z = false
+axis_lock_angular_x = false
+axis_lock_angular_y = false
+axis_lock_angular_z = false
+collision/safe_margin = 0.001
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="body_entered" from="Game Manager/Killbox" to="Game Manager/Killbox" method="_on_Killbox_body_entered"]
 
