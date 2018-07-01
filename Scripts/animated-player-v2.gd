@@ -18,7 +18,6 @@ var inventory = []
 func _ready():
 	manager = get_node("../Game Manager/")
 	anim_player = get_node("AnimationPlayer")
-	anim_tree = get_node("AnimationTreePlayer")
 	pass
 
 func _physics_process(delta):
@@ -63,7 +62,7 @@ func _physics_process(delta):
 				velocity.y = 8
 			else:
 				velocity.y  += 8
-			anim_player.play("jump")
+			anim_player.play("Jump")
 			#anim_tree.blend2_node_set_amount("Jump_Flip", 1)
 		
 			

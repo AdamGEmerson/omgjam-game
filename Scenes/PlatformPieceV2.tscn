@@ -1,13 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/PlatformPiece.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PlatformVisibilityNotifier.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Top_2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Side_02.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Edge_2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/wood.tres" type="Material" id=6]
 
 [sub_resource type="BoxShape" id=1]
 
-extents = Vector3( 1, 1.13961, 3.04924 )
+extents = Vector3( 1.08863, 1.13961, 2.95327 )
+
+[sub_resource type="CubeMesh" id=2]
+
+size = Vector3( 2, 2, 2 )
+subdivide_width = 0
+subdivide_height = 0
+subdivide_depth = 0
 
 [node name="Platform" type="KinematicBody"]
 
@@ -27,8 +36,10 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
 
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.166307, 0, -0.167202 )
 shape = SubResource( 1 )
 disabled = false
+_sections_unfolded = [ "Transform" ]
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="." index="1"]
 
@@ -44,6 +55,27 @@ _sections_unfolded = [ "Transform" ]
 
 transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -2.75846, 0.783768, -0.142792 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Edge" parent="." index="4" instance=ExtResource( 5 )]
+
+transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.0142752, 1.08677, 2.10475 )
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="5"]
+
+transform = Transform( 0.3, 0, 0, 0, 3, 0, 0, 0, 0.3, 2.84989, -2.01577, 0.640793 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 2 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 6 )
+_sections_unfolded = [ "Transform", "material" ]
 
 [connection signal="screen_exited" from="VisibilityNotifier" to="VisibilityNotifier" method="_on_VisibilityNotifier_screen_exited"]
 

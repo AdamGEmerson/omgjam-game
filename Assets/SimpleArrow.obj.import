@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/SimpleArrow.obj-7ac5df48e62628bc1338c14d70daf03c.mesh"
+
+[deps]
+
+files=[ "res://.import/SimpleArrow.obj-7ac5df48e62628bc1338c14d70daf03c.mesh" ]
+
+source_file="res://Assets/SimpleArrow.obj"
+source_md5="0d967b8bcf90602930d6ed4606f361b4"
+
+dest_files=[ "res://.import/SimpleArrow.obj-7ac5df48e62628bc1338c14d70daf03c.mesh", "res://.import/SimpleArrow.obj-7ac5df48e62628bc1338c14d70daf03c.mesh" ]
+dest_md5="c9171ef82e0ddbbb3423183b0c3809a1"
+
+[params]
+
+generate_tangents=true

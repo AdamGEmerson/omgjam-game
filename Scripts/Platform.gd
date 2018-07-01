@@ -14,7 +14,7 @@ func adjust_length():
 	for i in extra_plats:
 		var piece = preload("res://Scenes/PlatformPieceV2.tscn").instance()
 		add_child(piece)
-		piece.translate(Vector3(0,0, 1 + i))
+		piece.translate(Vector3(0,0, 2 + i))
 	length += extra_plats
 	print(length)
 		
@@ -42,9 +42,9 @@ func _process(delta):
 				if player.inventory.size() > 1:
 					pass
 				else:
-					var coin = preload("res://Scenes/Coin.tscn").instance()
+					var coin = preload("res://Jump Coin.tscn").instance()
+					coin.translate(Vector3(0, 1000, current_pos.z + length + jump_dist +  (range(7,12)[randi()%range(7, 12).size()] * 200)))
 					add_child(coin)
-					coin.translate(Vector3(0, 15, current_pos.z + length + jump_dist + 30))
 					pass
 					
 			manager.spawn_platform(Vector3(0, 0, (current_pos.z + length + jump_dist)))

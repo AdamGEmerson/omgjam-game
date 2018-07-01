@@ -1,0 +1,33 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/Goblin_gloss.jpg-9db6dda662a9c3e7f5cdb767ca842061.s3tc.stex"
+path.etc2="res://.import/Goblin_gloss.jpg-9db6dda662a9c3e7f5cdb767ca842061.etc2.stex"
+
+[deps]
+
+source_file="res://Assets/Model V3/Goblin_Maps_JPGs/Goblin_Main_JPGs/Goblin_gloss.jpg"
+source_md5="725f8eb86c930f93d48d9195c3f626f7"
+
+dest_files=[ "res://.import/Goblin_gloss.jpg-9db6dda662a9c3e7f5cdb767ca842061.s3tc.stex", "res://.import/Goblin_gloss.jpg-9db6dda662a9c3e7f5cdb767ca842061.etc2.stex" ]
+dest_md5="de1e888b06229d17d1181a449407544e"
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=true
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Assets/coin_PNG36871.png" type="Texture" id=1]
+[ext_resource path="res://Assets/CoinArrowImage01.png" type="Texture" id=1]
 
 [node name="coin-icon" type="Control"]
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/BG_Rocks01.obj-4af5e399c3709cbf495d58d45f41fcc0.mesh"
+
+[deps]
+
+files=[ "res://.import/BG_Rocks01.obj-4af5e399c3709cbf495d58d45f41fcc0.mesh" ]
+
+source_file="res://Assets/BG_Rocks01.obj"
+source_md5="81be5fa7f2c7d8dba0019a6ae17104e6"
+
+dest_files=[ "res://.import/BG_Rocks01.obj-4af5e399c3709cbf495d58d45f41fcc0.mesh", "res://.import/BG_Rocks01.obj-4af5e399c3709cbf495d58d45f41fcc0.mesh" ]
+dest_md5="eba8035cd573898a04172be7017cb9b0"
+
+[params]
+
+generate_tangents=true

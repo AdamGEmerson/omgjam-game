@@ -1,0 +1,33 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/Goblin_Parts_albedo.jpg-a812997fcbeaa8b0e76929c5be75ac0e.s3tc.stex"
+path.etc2="res://.import/Goblin_Parts_albedo.jpg-a812997fcbeaa8b0e76929c5be75ac0e.etc2.stex"
+
+[deps]
+
+source_file="res://Assets/Model V3/Goblin_Maps_JPGs/Goblin_Parts_JPGs/Goblin_Parts_albedo.jpg"
+source_md5="3b37b2cd56cd8aebafa377de49d19947"
+
+dest_files=[ "res://.import/Goblin_Parts_albedo.jpg-a812997fcbeaa8b0e76929c5be75ac0e.s3tc.stex", "res://.import/Goblin_Parts_albedo.jpg-a812997fcbeaa8b0e76929c5be75ac0e.etc2.stex" ]
+dest_md5="20884f967a63ff135bd6c397392a0ca2"
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=1
+flags/repeat=true
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=1
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

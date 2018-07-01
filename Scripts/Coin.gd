@@ -1,4 +1,4 @@
-extends Area
+extends Spatial
 
 # class member variables go here, for example:
 # var a = 2
@@ -9,10 +9,8 @@ func _ready():
 	# Initialization here
 	pass
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func _process(delta):
+	rotate_y(deg2rad(180 * delta))
 
 
 func _on_Coin_body_entered( body ):

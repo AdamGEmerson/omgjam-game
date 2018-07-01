@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/SimpleCoin.obj-4202329080cd40c703df570d57e726d6.mesh"
+
+[deps]
+
+files=[ "res://.import/SimpleCoin.obj-4202329080cd40c703df570d57e726d6.mesh" ]
+
+source_file="res://Assets/SimpleCoin.obj"
+source_md5="96766faee52997cf4da8218c117f770e"
+
+dest_files=[ "res://.import/SimpleCoin.obj-4202329080cd40c703df570d57e726d6.mesh", "res://.import/SimpleCoin.obj-4202329080cd40c703df570d57e726d6.mesh" ]
+dest_md5="48a744815a6eb8bbdf80a3597f180b11"
+
+[params]
+
+generate_tangents=true

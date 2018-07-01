@@ -23,7 +23,7 @@ _sections_unfolded = [ "Sky" ]
 
 [resource]
 
-background_mode = 2
+background_mode = 4
 background_sky = SubResource( 1 )
 background_sky_custom_fov = 0.0
 background_color = Color( 0, 0, 0, 1 )
@@ -70,9 +70,9 @@ ssao_color = Color( 0, 0, 0, 1 )
 ssao_quality = 0
 ssao_blur = 3
 ssao_edge_sharpness = 4.0
-dof_blur_far_enabled = false
-dof_blur_far_distance = 10.0
-dof_blur_far_transition = 5.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 17.0
+dof_blur_far_transition = 8.0
 dof_blur_far_amount = 0.1
 dof_blur_far_quality = 1
 dof_blur_near_enabled = false
@@ -99,5 +99,5 @@ adjustment_enabled = false
 adjustment_brightness = 1.0
 adjustment_contrast = 1.0
 adjustment_saturation = 1.0
-_sections_unfolded = [ "Background" ]
+_sections_unfolded = [ "Background", "DOF Far Blur" ]
 

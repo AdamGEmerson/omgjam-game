@@ -1,0 +1,32 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/cave_interior_background_by_sketcheth-d3kpvx8 copy.jpg-7a37571a7f3e9983df97bc5daa61c34e.stex"
+
+[deps]
+
+source_file="res://Assets/cave_interior_background_by_sketcheth-d3kpvx8 copy.jpg"
+source_md5="2ba2657f0407795001cb90abad2f965b"
+
+dest_files=[ "res://.import/cave_interior_background_by_sketcheth-d3kpvx8 copy.jpg-7a37571a7f3e9983df97bc5daa61c34e.stex" ]
+dest_md5="b28a9ea4dea8659a62773e0727347122"
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
