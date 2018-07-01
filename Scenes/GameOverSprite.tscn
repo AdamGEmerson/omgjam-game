@@ -103,12 +103,29 @@ animations = [ {
 } ]
 _sections_unfolded = [ "Resource" ]
 
-[node name="AnimatedSprite" type="AnimatedSprite"]
+[node name="AnimatedSprite" type="AnimatedSprite" index="0"]
 
 frames = SubResource( 1 )
 animation = "default"
-frame = 89
+frame = 73
 centered = false
 script = ExtResource( 92 )
+
+[node name="Panel" type="Panel" parent="." index="0"]
+
+modulate = Color( 1, 1, 1, 0.63 )
+show_behind_parent = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 2217.0
+margin_bottom = 1218.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Visibility" ]
 
 

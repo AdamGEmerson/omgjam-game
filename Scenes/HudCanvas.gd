@@ -5,6 +5,7 @@ var main
 var player
 var manager
 var game_over = false
+var game_active
 
 func _ready():
 	main = get_parent()
@@ -19,12 +20,14 @@ func _ready():
 		manager.title_screen = false
 	pass
 
+
 func _process(delta):
-	if game_over:
-		pass
-	else:
-		if manager.game_active:
-			get_node("Score").visible = true
+	
+	game_active = manager.game_active
+	
+	if manager.game_active:
+		get_node("Score").visible = true
+	if not game_over:
 		if player.inventory.size() == 1:
 			$coinicon.visible = true
 			$coinicon2.visible = false

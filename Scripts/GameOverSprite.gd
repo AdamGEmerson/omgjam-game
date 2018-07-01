@@ -14,5 +14,6 @@ func _process(delta):
 		if get_frame() == (self.get_sprite_frames().get_frame_count('default') - 1):
 			animation_complete = true
 			self.playing = false
+			self.set_frame(89)
 	if not animation_complete:
 		set_frame(get_frame() + 1)

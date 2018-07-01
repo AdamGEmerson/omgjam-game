@@ -23,7 +23,7 @@ func game_over_write():
 	game_over_screen.set_frame(0)
 	canvas.add_child(game_over_screen)
 	canvas.game_over = true
-	game_over = true
+	game_over = false
 
 func title_screen_write():
 	pass

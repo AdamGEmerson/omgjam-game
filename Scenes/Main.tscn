@@ -89,6 +89,7 @@ scroll_ignore_camera_zoom = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="2"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0

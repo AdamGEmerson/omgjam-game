@@ -13,6 +13,8 @@ var current_anim
 
 #Other Variables
 var inventory = []
+var game_over
+var kill_timer = 20
 
 
 func _ready():
@@ -23,13 +25,18 @@ func _ready():
 func _physics_process(delta):
 	
 	current_anim = anim_player.get_current_animation()
-	
 	velocity.y += gravity * delta
 	
+	if game_over:
+		kill_timer -= 1
+		if kill_timer == 0:
+			queue_free()
+	
 	var current_pos = get('translation')
-	if translation.y <= -10:
+	if translation.y <= -10 and manager.game_active:
 		manager.game_active = false
 		manager.game_over = true
+		game_over = true
 	
 	if velocity.y > 0:
 		gravity = -20
