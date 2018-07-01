@@ -1,22 +1,24 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Assets/cave_interior_background_by_sketcheth-d3kpvx8 copy.jpg" type="Texture" id=2]
 [ext_resource path="res://Scenes/HudCanvas.gd" type="Script" id=3]
-[ext_resource path="res://Assets/DINMittelschrift-Alternate.otf" type="DynamicFontData" id=4]
-[ext_resource path="res://Scenes/coin-icon.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Rocks_Layer.gd" type="Script" id=6]
-[ext_resource path="res://Scenes/rocks-scene-01.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scripts/Spatial.gd" type="Script" id=8]
-[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/Animated_PlayerV3.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Goblin_StartTitle/Goblin_StartTitle_0000.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/TitleSprite.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/DINMittelschrift-Alternate.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://Scenes/coin-icon.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Rocks_Layer.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/rocks-scene-01.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scripts/Spatial.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Animated_PlayerV3.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=3]
 
 size = 72
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 4 )
+font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font" ]
 
 [sub_resource type="DynamicFont" id=4]
@@ -24,7 +26,7 @@ _sections_unfolded = [ "Font" ]
 size = 48
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 4 )
+font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=2]
@@ -32,10 +34,10 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 60
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 4 )
+font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Main" type="Spatial"]
+[node name="Main" type="Spatial" index="0"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
 
@@ -97,7 +99,43 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 3 )
 
-[node name="TitleScreenOld" type="Panel" parent="CanvasLayer" index="0"]
+[node name="title_static" type="Control" parent="CanvasLayer" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/title_static" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 4 )
+stretch_mode = 0
+
+[node name="TitleSprite" parent="CanvasLayer" index="1" instance=ExtResource( 5 )]
+
+visible = false
+centered = false
+
+[node name="TitleScreenOld" type="Panel" parent="CanvasLayer" index="2"]
 
 editor/display_folded = true
 visible = false
@@ -157,7 +195,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Score" type="Label" parent="CanvasLayer" index="1"]
+[node name="Score" type="Label" parent="CanvasLayer" index="3"]
 
 anchor_left = 1.0
 anchor_top = 0.0
@@ -181,7 +219,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts", "custom_styles" ]
 
-[node name="coinicon" parent="CanvasLayer" index="2" instance=ExtResource( 5 )]
+[node name="coinicon" parent="CanvasLayer" index="4" instance=ExtResource( 7 )]
 
 margin_left = 32.0
 margin_top = 23.0
@@ -189,14 +227,14 @@ margin_right = 120.0
 margin_bottom = 109.0
 _sections_unfolded = [ "Rect", "Visibility" ]
 
-[node name="coinicon2" parent="CanvasLayer" index="3" instance=ExtResource( 5 )]
+[node name="coinicon2" parent="CanvasLayer" index="5" instance=ExtResource( 7 )]
 
 margin_left = 150.0
 margin_top = 22.0
 margin_right = 238.0
 margin_bottom = 108.0
 
-[node name="coinicon3" parent="CanvasLayer" index="4" instance=ExtResource( 5 )]
+[node name="coinicon3" parent="CanvasLayer" index="6" instance=ExtResource( 7 )]
 
 margin_left = 275.0
 margin_top = 22.0
@@ -206,14 +244,14 @@ margin_bottom = 108.0
 [node name="Rocks_Layer_Row_1" type="Spatial" parent="." index="3"]
 
 editor/display_folded = true
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Rocks_Row_2" parent="Rocks_Layer_Row_1" index="0" instance=ExtResource( 7 )]
+[node name="Rocks_Row_2" parent="Rocks_Layer_Row_1" index="0" instance=ExtResource( 9 )]
 
 transform = Transform( 0.0281908, -0.0102606, 0, 0.0102606, 0.0281908, 0, 0, 0, 0.05, 23, 1, 5 )
 
-[node name="Rocks_Row_1" parent="Rocks_Layer_Row_1" index="1" instance=ExtResource( 7 )]
+[node name="Rocks_Row_1" parent="Rocks_Layer_Row_1" index="1" instance=ExtResource( 9 )]
 
 transform = Transform( 0.0317001, -0.000618793, 0, 0.000618793, 0.0317001, 0, 0, 0, 0.03, 9.5, 0, 2 )
 
@@ -221,23 +259,23 @@ transform = Transform( 0.0317001, -0.000618793, 0, 0.000618793, 0.0317001, 0, 0,
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18 )
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Rocks_Row_2" parent="Rocks_Layer_Row_2" index="0" instance=ExtResource( 7 )]
+[node name="Rocks_Row_2" parent="Rocks_Layer_Row_2" index="0" instance=ExtResource( 9 )]
 
 transform = Transform( 0.0281908, -0.0102606, 0, 0.0102606, 0.0281908, 0, 0, 0, 0.05, 23, 1, 5 )
 
-[node name="Rocks_Row_1" parent="Rocks_Layer_Row_2" index="1" instance=ExtResource( 7 )]
+[node name="Rocks_Row_1" parent="Rocks_Layer_Row_2" index="1" instance=ExtResource( 9 )]
 
 transform = Transform( 0.0317001, -0.000618793, 0, 0.000618793, 0.0317001, 0, 0, 0, 0.03, 9.5, 0, 8.08384 )
 
 [node name="Game Manager" type="Spatial" parent="." index="5"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 6 )
-script = ExtResource( 8 )
+script = ExtResource( 10 )
 
-[node name="Platform" parent="Game Manager" index="0" instance=ExtResource( 9 )]
+[node name="Platform" parent="Game Manager" index="0" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12 )
@@ -310,9 +348,11 @@ omni_shadow_mode = 1
 omni_shadow_detail = 1
 _sections_unfolded = [ "Omni" ]
 
-[node name="Player" parent="." index="9" instance=ExtResource( 10 )]
+[node name="Player" parent="." index="9" instance=ExtResource( 12 )]
 
 transform = Transform( 0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, 0.0588694, 0.20152, -6.8181 )
+visible = false
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 
 [editable path="Game Manager/Platform"]

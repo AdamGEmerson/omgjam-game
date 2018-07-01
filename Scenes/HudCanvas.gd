@@ -13,11 +13,15 @@ func _ready():
 	manager = main.get_node("Game Manager")
 	for child in get_children():
 		child.visible = false
-	get_node("TitleScreenOld").visible = true
+	#get_node("TitleScreenOld").visible = true
+	get_node("TitleSprite").visible = false
+	get_node("title_static").visible = true
 	if Input.is_action_just_pressed("ui_accept"):
 		manager.game_active = true
-		get_node("TitleScreenOld").visible = false
+		get_node("title_static").visible = false
+		get_node("TitleSprite").visible = true
 		manager.title_screen = false
+		main.get_node("Player").visible = true
 	pass
 
 
